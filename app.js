@@ -19,6 +19,9 @@ function start_game()
         btn.innerText = "";
     });
     human_play(array)
+    
+    winner(array)
+   
    
  
 
@@ -29,8 +32,8 @@ function human_play(btns) {
         btn.addEventListener("click", () => {
             if (btn.innerText === "") {
                 btn.innerText = "X"; 
-              
-                
+                computer_play(array);
+                  
             }
             else{
                 console.log("wozaa")
@@ -39,20 +42,30 @@ function human_play(btns) {
     });
 }
 function computer_play(btns) {
-
-   
     let randomIndex;
-    randomIndex = Math.ceil(Math.random() * 9);
-
-    if(array[randomIndex] === " ")
-    {
-        btns[randomIndex].innerText = "o"
-    }
+    
+        for (i=0; i<=9;i++)
+        {
+            randomIndex = Math.floor(Math.random()*9)+1;
+            if(btns[randomIndex].innerText === '')
+                {
+                    btns[randomIndex].innerText = 'O'
+                  break
+                    
+                }
+                else{
+                    break
+                }
+                
+            
+        }
+       
+    
    
 }
 function winner(btns)
 {
-    if(btns[0] === btns[1] && btns[1] === btns[0] === "2"  && btns[0].innerText === "X" ){
+    if(btns[0].innerText === btns[1].innerText && btns[1].innerText === btns[2].innerText  && btns[2].innerText === btns[3].innerText ){
         console.log("You have won")
     }
 }
